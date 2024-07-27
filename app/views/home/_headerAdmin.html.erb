@@ -1,0 +1,33 @@
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkPath = new URL(link.href).pathname;
+        link.classList.remove('active');
+        
+        // Compare the paths
+        if (linkPath === currentPath) {
+            link.classList.add('active');
+        }
+    });
+});
+
+
+</script>
+<div class="position-fixed d-flex flex-column p-3 bg-light" style="width: 250px; height: 100vh;">
+    <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" style="user-select: none;">
+        <span class="fs-4">Admin Dashboard</span>
+    </div>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Graphs", admin_dashboard_graph_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Sign Out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "nav-link" %>
+        </li>
+    </ul>
+</div>

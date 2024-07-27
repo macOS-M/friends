@@ -1,3 +1,8 @@
+# app/models/friend.rb
 class Friend < ApplicationRecord
     belongs_to :user
-end
+   
+  
+    validates :first_name, :last_name, presence: true
+  end
+  
